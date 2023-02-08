@@ -5,7 +5,7 @@ import java.io.PrintStream;
 import java.util.*;
 public class Tic {
 	 static char[][] a = new char[3][3];
-	 static PrintStream print = new PrintStream(new FileOutputStream(FileDescriptor.out));
+	 static PrintStream prints = new PrintStream(new FileOutputStream(FileDescriptor.out));
 	
 	public int check()
 	{  
@@ -14,7 +14,7 @@ public class Tic {
 		   (a[2][0]=='X' && a[2][1]=='X' && a[2][2]=='X') || (a[0][2]=='X' && a[1][2]=='X' && a[2][2]=='X') ||
 		   (a[0][0]=='X' && a[1][1]=='X' && a[2][2]=='X') || (a[0][2]=='X' && a[1][1]=='X' && a[2][0]=='X'))
 		{
-			print.println("Player 1 Wins");
+			prints.println("Player 1 Wins");
 			return 1;
 		}
 		else if(   (a[0][0]=='O' && a[0][1]=='O' && a[0][2]=='O') || (a[0][0]=='O' && a[1][0]=='O' && a[2][0]=='O') ||
@@ -22,7 +22,7 @@ public class Tic {
 				   (a[2][0]=='O' && a[2][1]=='O' && a[2][2]=='O') || (a[0][2]=='O' && a[1][2]=='O' && a[2][2]=='O') ||
 				   (a[0][0]=='O' && a[1][1]=='O' && a[2][2]=='O') || (a[0][2]=='O' && a[1][1]=='O' && a[2][0]=='O'))
 				{
-			print.println("Player 2 Wins");
+			prints.println("Player 2 Wins");
 					return 1;
 				}
 		else
@@ -42,15 +42,15 @@ public class Tic {
 	    {
 	    	if(i%2 == 0)
 	    	{
-	    		print.println("Player 1's turn:");
+	    		prints.println("Player 1's turn:");
 	    		x='X';
 	    	}
 	    	else
 	    	{
-	    		print.println("Player 2's turn:");
+	    		prints.println("Player 2's turn:");
 	    		x='O';
 	    	}
-	    	print.println("Enter the position:");
+	    	prints.println("Enter the position:");
 		    int c = sc.nextInt();
 		    
 	    switch (c)
@@ -83,7 +83,7 @@ public class Tic {
 	    	a[2][2] = x;
 	    	break;
 	    default :
-	    	print.println("Enter valid position");
+	    	prints.println("Enter valid position");
 	    }
 	    count++;
 	    if(count >=5)
@@ -101,13 +101,13 @@ public class Tic {
 	    {
 	    	for(int j=0;j<3;j++)
 	    	{
-	    		print.print("|" + a[i][j] + "|");
+	    		prints.print("|" + a[i][j] + "|");
 	    	}
-	    	print.println("\n---------");	    	
+	    	prints.println("\n---------");	    	
 	    }
 	    if(res == 0)
 	    {
-	    	print.println("Match Draw!!!");
+	    	prints.println("Match Draw!!!");
 	    }
 	    
 	}
