@@ -103,9 +103,7 @@ public class Tic {
 	    	{
 	    		print.print("|" + a[i][j] + "|");
 	    	}
-	    	print.print("\n");
-	    	print.println("---------");
-	    	
+	    	print.println("\n---------");	    	
 	    }
 	    if(res == 0)
 	    {
