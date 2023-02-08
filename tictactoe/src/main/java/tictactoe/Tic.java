@@ -9,25 +9,91 @@ public class Tic {
 	
 	public int check()
 	{  
-		if((a[0][0]=='X' && a[0][1]=='X' && a[0][2]=='X') || (a[0][0]=='X' && a[1][0]=='X' && a[2][0]=='X') ||
-		   (a[1][0]=='X' && a[1][1]=='X' && a[1][2]=='X') || (a[0][1]=='X' && a[1][1]=='X' && a[2][1]=='X') ||
-		   (a[2][0]=='X' && a[2][1]=='X' && a[2][2]=='X') || (a[0][2]=='X' && a[1][2]=='X' && a[2][2]=='X') ||
-		   (a[0][0]=='X' && a[1][1]=='X' && a[2][2]=='X') || (a[0][2]=='X' && a[1][1]=='X' && a[2][0]=='X'))
+		if((a[0][0]=='X' && a[0][1]=='X' && a[0][2]=='X'))
+				{
+			print.println("Player 1 Wins");
+			return 1;
+			
+				}
+		else if  ((a[0][0]=='X' && a[1][0]=='X' && a[2][0]=='X')) 
 		{
 			print.println("Player 1 Wins");
 			return 1;
 		}
-		else if(   (a[0][0]=='O' && a[0][1]=='O' && a[0][2]=='O') || (a[0][0]=='O' && a[1][0]=='O' && a[2][0]=='O') ||
-				   (a[1][0]=='O' && a[1][1]=='O' && a[1][2]=='O') || (a[0][1]=='O' && a[1][1]=='O' && a[2][1]=='O') ||
-				   (a[2][0]=='O' && a[2][1]=='O' && a[2][2]=='O') || (a[0][2]=='O' && a[1][2]=='O' && a[2][2]=='O') ||
-				   (a[0][0]=='O' && a[1][1]=='O' && a[2][2]=='O') || (a[0][2]=='O' && a[1][1]=='O' && a[2][0]=='O'))
-				{
+				
+		else if  ( (a[1][0]=='X' && a[1][1]=='X' && a[1][2]=='X'))
+		{
+			print.println("Player 1 Wins");
+			return 1;
+		}
+		else if (   (a[0][1]=='X' && a[1][1]=='X' && a[2][1]=='X'))
+			{
+			print.println("Player 1 Wins");
+			return 1;
+			}
+		else if ((a[2][0]=='X' && a[2][1]=='X' && a[2][2]=='X'))
+		{
+			print.println("Player 1 Wins");
+			return 1;
+		}
+		else if(   (a[0][2]=='X' && a[1][2]=='X' && a[2][2]=='X'))
+			{
+			print.println("Player 1 Wins");
+			return 1;
+			}
+		else if( (a[0][0]=='X' && a[1][1]=='X' && a[2][2]=='X') )
+		{
+			print.println("Player 1 Wins");
+			return 1;
+		}
+		else if( (a[0][2]=='X' && a[1][1]=='X' && a[2][0]=='X'))
+		{
+			print.println("Player 1 Wins");
+			return 1;
+		}
+		else if( (a[0][0]=='O' && a[0][1]=='O' && a[0][2]=='O'))
+			{
 			print.println("Player 2 Wins");
-					return 1;
-				}
+			return 1;
+			}
+		else if( (a[0][0]=='O' && a[1][0]=='O' && a[2][0]=='O'))
+		{
+			print.println("Player 2 Wins");
+			return 1;
+		}
+		else if ((a[1][0]=='O' && a[1][1]=='O' && a[1][2]=='O'))
+			{
+			print.println("Player 2 Wins");
+			return 1;
+			}
+		else if( (a[0][1]=='O' && a[1][1]=='O' && a[2][1]=='O'))
+			{
+			print.println("Player 2 Wins");
+			return 1;
+			
+			}
+		else if( (a[2][0]=='O' && a[2][1]=='O' && a[2][2]=='O'))
+			{
+			print.println("Player 2 Wins");
+			return 1;
+			}
+		else if( (a[0][2]=='O' && a[1][2]=='O' && a[2][2]=='O'))
+		{
+			print.println("Player 2 Wins");
+			return 1;
+		}
+		else if( (a[0][0]=='O' && a[1][1]=='O' && a[2][2]=='O'))
+			{
+			print.println("Player 2 Wins");
+			return 1;
+			}
+		else if( (a[0][2]=='O' && a[1][1]=='O' && a[2][0]=='O'))
+		{
+			print.println("Player 2 Wins");
+			return 1;
+		}			
 		else
-			return 0;
-		
+			return 0;		
 	}
 	
 	public static void main(String[] args)
