@@ -4,8 +4,8 @@ import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.util.*;
 public class Tic {
-	public static char[][] a = new char[3][3];
-	public static PrintStream print = new PrintStream(new FileOutputStream(FileDescriptor.out));
+	 static char[][] a = new char[3][3];
+	 static PrintStream print = new PrintStream(new FileOutputStream(FileDescriptor.out));
 	
 	public int check()
 	{  
@@ -101,9 +101,9 @@ public class Tic {
 	    {
 	    	for(int j=0;j<3;j++)
 	    	{
-	    		print.println("|" + a[i][j] + "|");
+	    		print.print("|" + a[i][j] + "|");
 	    	}
-	    	print.println("\n");
+	    	print.print("\n");
 	    	print.println("---------");
 	    	
 	    }
