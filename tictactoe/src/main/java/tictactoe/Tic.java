@@ -13,9 +13,7 @@ public class Tic {
 		 	return 1;
 	    }
 		else if( a[0][2] == x && a[1][1]==x  && a[2][0]==x )
-		{
 		 	return 1;
-	    }
 		for(int j=0;j<a.length;j++)
 		{
 			
@@ -95,10 +93,10 @@ public class Tic {
 	    	{
 	    		if(count%2 == 0)
 	    		{
-	    			System.out.println("Player 2 Wins");
+	    			prints.println("Player 2 Wins");
 	    		}
 	    		else
-	    			System.out.println("Player 1 Wins");
+	    			prints.println("Player 1 Wins");
 	    			
 	    	 break;
 	    	}
@@ -112,7 +110,6 @@ public class Tic {
 	    	{
 	    		prints.print("|" + a[i][j] + "|");
 	    	}
-	    	//print.print("\n");
 	    	prints.println("\n---------");	    	
 	    }
 	    if(res == 0)
