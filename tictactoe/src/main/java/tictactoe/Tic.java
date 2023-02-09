@@ -32,6 +32,15 @@ public class Tic {
 		}		
 		return 0;
 	}
+	public static void result(int count)
+	{
+		if(count%2 == 0)
+		{
+			prints.println("Player 2 Wins");
+		}
+		else
+			prints.println("Player 1 Wins");
+	}
 	public static void main(String[] args)
 	{   
 		int res = 0;
@@ -89,21 +98,17 @@ public class Tic {
 	    if(count >=5)
 	       {
 	    	res = tac.check(x);
+	       }
 	    	if(res == 1)
 	    	{
-	    		if(count%2 == 0)
-	    		{
-	    			prints.println("Player 2 Wins");
-	    		}
-	    		else
-	    			prints.println("Player 1 Wins");
+	    		tac.result(count);
 	    			
 	    	 break;
 	    	}
 	    	else
 	    		res =0;
 	       }
-	    }
+	    
 	    for(int i=0;i<3;i++)
 	    {
 	    	for(int j=0;j<3;j++)
