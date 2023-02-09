@@ -67,7 +67,7 @@ public class Tic {
 		    {
 		    	prints.println("Position is already filled:");
 		    	prints.println("Re-enter the possition");
-		    	i--;
+		    	i = i+1;
 		    }
 		    else
 		    {
