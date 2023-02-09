@@ -47,7 +47,8 @@ public class Tic {
 		Tic tac = new Tic();
 		Scanner sc = new Scanner(System.in); 
 	    char x='0';
-	    int count = 0; 	    
+	    int count = 0; 	  
+	    ArrayList<Integer> arrlist = new ArrayList<Integer>(); 
 	    for(int i=0;i<9;i++)
 	    {
 	    	if(i%2 == 0)
@@ -61,7 +62,16 @@ public class Tic {
 	    		x='O';
 	    	}
 	    	prints.println("Enter the position:");
-		    int c = sc.nextInt();		    
+		    int c = sc.nextInt();
+		    if(arrlist.contains(c))
+		    {
+		    	prints.println("Position is already filled:");
+		    	prints.println("Re-enter the possition");
+		    	i--;
+		    }
+		    else
+		    {
+          arrlist.add(c);
 	    switch (c)
 	    {
 	    case 1:
@@ -108,6 +118,7 @@ public class Tic {
 	    	else
 	    		res =0;
 	       }
+	    }
 	    
 	    for(int i=0;i<3;i++)
 	    {
