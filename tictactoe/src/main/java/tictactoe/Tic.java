@@ -101,7 +101,7 @@ public class Tic {
 	       }
 	    	if(res == 1)
 	    	{
-	    		tac.result(count);
+	    		result(count);
 	    			
 	    	 break;
 	    	}
