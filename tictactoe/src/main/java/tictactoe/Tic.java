@@ -5,39 +5,42 @@ import java.io.PrintStream;
 import java.util.*;
 public class Tic {
 	 static char[][] a = new char[3][3];
-	 static PrintStream prints = new PrintStream(new FileOutputStream(FileDescriptor.out));
-	
-	public int check()
-	{  
-		if((a[0][0]=='X' && a[0][1]=='X' && a[0][2]=='X') || (a[0][0]=='X' && a[1][0]=='X' && a[2][0]=='X') ||
-		   (a[1][0]=='X' && a[1][1]=='X' && a[1][2]=='X') || (a[0][1]=='X' && a[1][1]=='X' && a[2][1]=='X') ||
-		   (a[2][0]=='X' && a[2][1]=='X' && a[2][2]=='X') || (a[0][2]=='X' && a[1][2]=='X' && a[2][2]=='X') ||
-		   (a[0][0]=='X' && a[1][1]=='X' && a[2][2]=='X') || (a[0][2]=='X' && a[1][1]=='X' && a[2][0]=='X'))
+	 static PrintStream prints = new PrintStream(new FileOutputStream(FileDescriptor.out));	
+	public int check(char x)
+	{   
+		if( a[0][0] == x && a[1][1]==x && a[2][2]==x )
 		{
-			prints.println("Player 1 Wins");
-			return 1;
+		 	return 1;
+	    }
+		else if( a[0][2] == x && a[1][1]==x  && a[2][0]==x )
+		{
+		 	return 1;
+	    }
+		for(int j=0;j<a.length;j++)
+		{
+			
+			if((a[0][j] == x) && (a[1][j] == x) && (a[2][j] == x) )
+			{
+				return 1;
+			}
+			
 		}
-		else if(   (a[0][0]=='O' && a[0][1]=='O' && a[0][2]=='O') || (a[0][0]=='O' && a[1][0]=='O' && a[2][0]=='O') ||
-				   (a[1][0]=='O' && a[1][1]=='O' && a[1][2]=='O') || (a[0][1]=='O' && a[1][1]=='O' && a[2][1]=='O') ||
-				   (a[2][0]=='O' && a[2][1]=='O' && a[2][2]=='O') || (a[0][2]=='O' && a[1][2]=='O' && a[2][2]=='O') ||
-				   (a[0][0]=='O' && a[1][1]=='O' && a[2][2]=='O') || (a[0][2]=='O' && a[1][1]=='O' && a[2][0]=='O'))
-				{
-			prints.println("Player 2 Wins");
-					return 1;
-				}
-		else
-			return 0;
-		
+		for(int i=0;i<a.length;i++)
+		{   			
+			if((a[i][0] == x)  && (a[i][1] == x) && (a[i][2] == x) )
+			{
+				return 1;
+			}			
+		}		
+		return 0;
 	}
-	
 	public static void main(String[] args)
 	{   
 		int res = 0;
 		Tic tac = new Tic();
 		Scanner sc = new Scanner(System.in); 
 	    char x='0';
-	    int count = 0;
-	    
+	    int count = 0; 	    
 	    for(int i=0;i<9;i++)
 	    {
 	    	if(i%2 == 0)
@@ -51,8 +54,7 @@ public class Tic {
 	    		x='O';
 	    	}
 	    	prints.println("Enter the position:");
-		    int c = sc.nextInt();
-		    
+		    int c = sc.nextInt();		    
 	    switch (c)
 	    {
 	    case 1:
@@ -88,10 +90,17 @@ public class Tic {
 	    count++;
 	    if(count >=5)
 	       {
-	    	res = tac.check();
+	    	res = tac.check(x);
 	    	if(res == 1)
 	    	{
-	    	break;
+	    		if(count%2 == 0)
+	    		{
+	    			System.out.println("Player 2 Wins");
+	    		}
+	    		else
+	    			System.out.println("Player 1 Wins");
+	    			
+	    	 break;
 	    	}
 	    	else
 	    		res =0;
@@ -103,14 +112,13 @@ public class Tic {
 	    	{
 	    		prints.print("|" + a[i][j] + "|");
 	    	}
+	    	//print.print("\n");
 	    	prints.println("\n---------");	    	
 	    }
 	    if(res == 0)
 	    {
 	    	prints.println("Match Draw!!!");
-	    }
-	    
+	    }	    
 	}
-
 }
 
