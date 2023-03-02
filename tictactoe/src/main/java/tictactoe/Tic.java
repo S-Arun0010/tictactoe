@@ -8,7 +8,7 @@ public class Tic {
 	
 	static PrintStream print = new PrintStream(new FileOutputStream(FileDescriptor.out));
 	static int flag;
-	public static  void display(char array[][],int dimension)
+	public static  void display(char[][] array,int dimension)
 	{
 		for(int i=0;i<dimension ;i++)
 		{
