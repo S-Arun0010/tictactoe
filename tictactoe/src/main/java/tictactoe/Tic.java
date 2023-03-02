@@ -21,7 +21,7 @@ public class Tic {
 		}
 	}
 	
-	public static int checkcolumn(char array[][],int d,char x)
+	public static int checkcolumn(char[][] array,int d,char x)
 	{  
 		 flag=0;
 		for(int i=0;i<d;i++)
@@ -31,7 +31,6 @@ public class Tic {
 				if(array[j][i] == x)
 				{
 					flag =1;
-					continue;
 				}
 				else
 				{
@@ -47,7 +46,7 @@ public class Tic {
 		return 0;
 	}
 	
-	public static int checkrow(char array[][],int d,char x)
+	public static int checkrow(char[][] array,int d,char x)
 	{     
 		 flag=0;
 		  for(int i=0;i<d;i++)
@@ -57,7 +56,6 @@ public class Tic {
 				  if(array[i][j] == x)
 				  {
 					 flag=1;
-					 continue;
 				  }
 				  else
 				  {
@@ -72,7 +70,7 @@ public class Tic {
 		  return 0;
 	}
 	
-	public static int checkdiagnol(char array[][],int d,char x)
+	public static int checkdiagnol(char[][] array,int d,char x)
 	{    
 		 flag=0;
 		for(int i=0;i<d;i++)
@@ -90,14 +88,15 @@ public class Tic {
 	}
 	
 	public static int getinput()
-	{
+	{  
+		int value;
 		do
 		{
 			try
 			{   
 				Scanner sc = new Scanner(System.in);
-				int value = sc.nextInt();
-				return value;
+				value = sc.nextInt();
+				break;
 			}
 			catch(InputMismatchException e)
 			{
@@ -105,6 +104,7 @@ public class Tic {
 				print.println("Re-enter the value:");
 			}
 		}while(true);
+		return value;
 	}
 	
 	public static void main(String[] args)
@@ -132,6 +132,7 @@ public class Tic {
 				 x = 'o';
 			}
 			position = getinput();
+			
 			if(list.contains(position) || position >(dimension*dimension)-1)
 		    {
 		    	print.println("Invalid Position or Its been already filled:");
@@ -142,6 +143,7 @@ public class Tic {
 		    {  
                   list.add(position);
 		    }
+			
 			count++;
 			int y=0;
 			for(int i=0;i<dimension;i++)
