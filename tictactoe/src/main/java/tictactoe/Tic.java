@@ -3,125 +3,186 @@ import java.io.FileDescriptor;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.util.*;
+
 public class Tic {
-	 static char[][] a = new char[3][3];
-	 static PrintStream prints = new PrintStream(new FileOutputStream(FileDescriptor.out));	
-	public int check(char x)
-	{   
-		if( a[0][0] == x && a[1][1]==x && a[2][2]==x )
+	
+	static PrintStream print = new PrintStream(new FileOutputStream(FileDescriptor.out));
+	static int flag;
+	public static  void display(char array[][],int dimension)
+	{
+		for(int i=0;i<dimension ;i++)
 		{
-		 	return 1;
-	    }
-		else if( a[0][2] == x && a[1][1]==x  && a[2][0]==x )
-		 	return 1;
-		for(int j=0;j<a.length;j++)
-		{
+			for(int j=0;j<dimension;j++)
+			{   
+				print.print("|" + array[i][j] + "|");
+			}
+			print.println();
 			
-			if((a[0][j] == x) && (a[1][j] == x) && (a[2][j] == x) )
+		}
+	}
+	
+	public static int checkcolumn(char array[][],int d,char x)
+	{  
+		 flag=0;
+		for(int i=0;i<d;i++)
+		{ 
+			for(int j=0;j<d;j++)
+			{
+				if(array[j][i] == x)
+				{
+					flag =1;
+					continue;
+				}
+				else
+				{
+					flag=0;
+					break;
+				}
+			}
+			if(flag == 1)
 			{
 				return 1;
 			}
-			
 		}
-		for(int i=0;i<a.length;i++)
-		{   			
-			if((a[i][0] == x)  && (a[i][1] == x) && (a[i][2] == x) )
-			{
-				return 1;
-			}			
-		}		
 		return 0;
 	}
-	public static void result(int count)
-	{
-		if(count%2 == 0)
+	
+	public static int checkrow(char array[][],int d,char x)
+	{     
+		 flag=0;
+		  for(int i=0;i<d;i++)
+		  {
+			  for(int j=0;j<d;j++)
+			  {
+				  if(array[i][j] == x)
+				  {
+					 flag=1;
+					 continue;
+				  }
+				  else
+				  {
+					  flag=0;
+					  break;
+				  }
+			  }if(flag==1)
+			  {
+				  return 1;
+			  }
+		  }
+		  return 0;
+	}
+	
+	public static int checkdiagnol(char array[][],int d,char x)
+	{    
+		 flag=0;
+		for(int i=0;i<d;i++)
 		{
-			prints.println("Player 2 Wins");
+			if((array[i][d-i-1] == x) ||(array[i][i] == x) )
+			{
+				flag = 1;
+			}
+			else
+			{
+				return 0;
+			}		
 		}
-		else
-			prints.println("Player 1 Wins");
+		return 1;
 	}
+	
+	public static int getinput()
+	{
+		do
+		{
+			try
+			{   
+				Scanner sc = new Scanner(System.in);
+				int value = sc.nextInt();
+				return value;
+			}
+			catch(InputMismatchException e)
+			{
+				print.println(e);
+				print.println("Re-enter the value:");
+			}
+		}while(true);
+	}
+	
 	public static void main(String[] args)
-	{   
-		int res = 0;
-		Tic tac = new Tic();
-		Scanner sc = new Scanner(System.in); 
-	    char x='0';
-	    int count = 0; 	  
-	    for(int i=0;i<9;i++)
-	    {
-	    	if(i%2 == 0)
-	    	{
-	    		prints.println("Player 1's turn:");
-	    		x='X';
-	    	}
-	    	else
-	    	{
-	    		prints.println("Player 2's turn:");
-	    		x='O';
-	    	}
-	    	prints.println("Enter the position:");
-		    int c = sc.nextInt();
-	    switch (c)
-	    {
-	    case 1:
-	    	a[0][0] = x;
-	    	break;
-	    case 2:
-	    	a[0][1] = x;
-	    	break;
-	    case 3:
-	    	a[0][2] = x;
-	    	break;
-	    case 4:
-	    	a[1][0] = x;
-	    	break;
-	    case 5:
-	    	a[1][1] = x;
-	    	break;
-	    case 6:
-	    	a[1][2] = x;
-	    	break;
-	    case 7:
-	    	a[2][0] = x;
-	    	break;
-	    case 8:
-	    	a[2][1] = x;
-	    	break;
-	    case 9:
-	    	a[2][2] = x;
-	    	break;
-	    default :
-	    	prints.println("Enter valid position");
-	    }
-	    count++;
-	    if(count >=5)
-	       {
-	    	res = tac.check(x);
-	       }
-	    	if(res == 1)
-	    	{
-	    		result(count);
-	    			
-	    	 break;
-	    	}
-	    	else
-	    		res =0;
-	       }
-	    
-	    
-	    for(int i=0;i<3;i++)
-	    {
-	    	for(int j=0;j<3;j++)
-	    	{
-	    		prints.print("|" + a[i][j] + "|");
-	    	}
-	    	prints.println("\n---------");	    	
-	    }
-	    if(res == 0)
-	    {
-	    	prints.println("Match Draw!!!");
-	    }	    
-	}
-}
+	{   		
+		print.println("Enter the dimension:");
+		int dimension = getinput();
+		int position;
+		int count =0;
+		char[][] box = new char[dimension][dimension];	
+		ArrayList<Integer> list = new ArrayList<>(dimension);
 
+		char x=' ';
+		while(count < (dimension*dimension) )
+		{    
+			
+			if(count % 2 == 0)
+			{
+				
+				 print.println("1st player turn:");
+				 x = 'x';
+			}
+			else
+			{
+				print.println("2nd player turn:");				
+				 x = 'o';
+			}
+			position = getinput();
+			if(list.contains(position) || position >(dimension*dimension)-1)
+		    {
+		    	print.println("Invalid Position or Its been already filled:");
+		    	print.println("Re-enter the possition");
+		    	continue;
+		    }
+		    else
+		    {  
+                  list.add(position);
+		    }
+			count++;
+			int y=0;
+			for(int i=0;i<dimension;i++)
+			{
+				for(int j=0;j<dimension;j++)
+				{
+					if(y == position-1 )
+					{
+						box[i][j] = x;
+					}
+					y++;
+				}
+			}
+			
+			if(count>=(dimension*2)-1)
+			{   
+				if(checkrow(box,dimension,x) == 1  )
+				{
+					print.println( "player " + x + " wins");
+					display(box,dimension);
+					System.exit(0);
+				}
+				else if(checkcolumn(box,dimension,x) == 1)
+				{
+					print.println("player " + x + " wins");
+					display(box,dimension);
+					System.exit(0);
+				}
+				else if(checkdiagnol(box,dimension,x) == 1)
+				{
+					print.println("player " + x + " wins");
+					display(box,dimension);
+					System.exit(0);
+				}
+				
+			}
+						
+		}
+		display(box,dimension);
+		print.println("Match draw");
+		
+	}
+
+}
