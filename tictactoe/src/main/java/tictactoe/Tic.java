@@ -140,7 +140,7 @@ public class Tic {
 			x = getturn(count);
 			position = getinput();
 			
-			if(list.contains(position) || position >(dimension*dimension)-1)
+			if(list.contains(position) || position >(dimension*dimension)-1 || position<=0)
 		    {
 		    	print.println("Invalid Position or Its been already filled:");
 		    	print.println("Re-enter the possition");
