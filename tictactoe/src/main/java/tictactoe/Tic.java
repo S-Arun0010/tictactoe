@@ -25,7 +25,7 @@ public class Tic {
 	{  
 		 flag=0;
 		for(int i=0;i<d;i++)
-		{ 
+		{     
 			for(int j=0;j<d;j++)
 			{
 				if(array[j][i] == x)
@@ -64,6 +64,7 @@ public class Tic {
 				  }
 			  }if(flag==1)
 			  {
+				  print.println( "player " + x + " wins");
 				  return 1;
 			  }
 		  }
@@ -106,6 +107,22 @@ public class Tic {
 		}while(true);
 		return value;
 	}
+	public static char getturn(int count)
+	{
+		char x;
+		if(count % 2 == 0)
+		{
+			
+			 print.println("1st player turn:");
+			x = 'x';
+		}
+		else
+		{
+			print.println("2nd player turn:");				
+			 x = 'o';
+		}
+		return x;
+	}
 	
 	public static void main(String[] args)
 	{   		
@@ -119,18 +136,8 @@ public class Tic {
 		char x=' ';
 		while(count < (dimension*dimension) )
 		{    
-			
-			if(count % 2 == 0)
-			{
-				
-				 print.println("1st player turn:");
-				 x = 'x';
-			}
-			else
-			{
-				print.println("2nd player turn:");				
-				 x = 'o';
-			}
+
+			x = getturn(count);
 			position = getinput();
 			
 			if(list.contains(position) || position >(dimension*dimension)-1)
@@ -143,6 +150,7 @@ public class Tic {
 		    {  
                   list.add(position);
 		    }
+			
 			
 			count++;
 			int y=0;
@@ -157,29 +165,26 @@ public class Tic {
 					y++;
 				}
 			}
-			
-			if(count>=(dimension*2)-1)
-			{   
+   
 				if(checkrow(box,dimension,x) == 1  )
 				{
-					print.println( "player " + x + " wins");
+					print.println( "player " + x + " wins by row");
 					display(box,dimension);
-					System.exit(0);
+					return;
 				}
 				else if(checkcolumn(box,dimension,x) == 1)
 				{
-					print.println("player " + x + " wins");
+					print.println("player " + x + " wins by column");
 					display(box,dimension);
-					System.exit(0);
+					return;
 				}
 				else if(checkdiagnol(box,dimension,x) == 1)
 				{
-					print.println("player " + x + " wins");
+					print.println("player " + x + " wins by Diagnol");
 					display(box,dimension);
-					System.exit(0);
+					return;
 				}
-				
-			}
+
 						
 		}
 		display(box,dimension);
