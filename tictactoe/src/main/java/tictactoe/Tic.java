@@ -6,7 +6,10 @@ import java.util.*;
 
 public class Tic {
 	
-	
+	private Tic()
+	{
+		
+	}
 	static PrintStream print = new PrintStream(new FileOutputStream(FileDescriptor.out));
 	static int flag;
 	public static  void display(char[][] array,int dimension)
@@ -86,27 +89,27 @@ public class Tic {
 		}
 		return 1;
 	}
-	public static int check(char[][] box,int dimension,char x)
+	public static void check(char[][] box,int dimension,char x)
 	{
 		if(checkrow(box,dimension,x) == 1  )
 		{
 			print.println(  x + " wins by row");
 			display(box,dimension);
-			return 1;
+			System.exit(0);
 		}
 		else if(checkcolumn(box,dimension,x) == 1)
 		{
 			print.println( x + " wins by column");
 			display(box,dimension);
-			return 1;
+			System.exit(0);
 		}
 		else if(checkdiagnol(box,dimension,x) == 1)
 		{
 			print.println( x + " wins by Diagnol");
 			display(box,dimension);
-			return 1;
+			System.exit(0);
 		}
-		return 0;
+		
 	}
 	
 	public static int getinput()
@@ -145,7 +148,7 @@ public class Tic {
 		return x;
 	}
 	
-	public static void tictactoe()
+	public static void main(String[] args)
 	{   		
 		print.println("Enter the dimension:");
 		int dimension = getinput();
@@ -184,7 +187,8 @@ public class Tic {
 					y++;
 				}
 			}
-           check(box,dimension,x);				
+           check(box,dimension,x);
+        	  
 		}
 		display(box,dimension);
 		print.println("Match draw");
